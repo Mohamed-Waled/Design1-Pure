@@ -55,10 +55,16 @@ function tabs() {
 
   function filter() {
     allProjects.forEach((project) => {
-      project.style.display = "none";
+      project.style.order = "unset";
+      project.style.opacity = "0";
+      project.style.position = "absolute";
+      project.style.zIndex = "-500";
     });
     document.querySelectorAll(this.dataset.cat).forEach((project) => {
-      project.style.display = "flex";
+      project.style.zIndex = "unset";
+      project.style.order = "-1";
+      project.style.opacity = "1";
+      project.style.position = "relative";
     });
   }
 }
@@ -66,3 +72,16 @@ function tabs() {
 menuButton();
 onScroll();
 tabs();
+
+var swiper = new Swiper(".mySwiper", {
+  slidesPerView: 1,
+  loop: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
