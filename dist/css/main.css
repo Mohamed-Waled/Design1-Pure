@@ -785,7 +785,7 @@ ul {
   width: 100%;
   height: 100%;
   padding: 30px 20px;
-  top: calc(100% - 60px);
+  top: calc(100% - 70px);
   left: 0;
   opacity: 1;
   -webkit-transition: 0.5s;
@@ -794,6 +794,59 @@ ul {
 }
 #work .container .workInfo .workBox .gallery .all .front .details h3 {
   margin-bottom: 30px;
+}
+#work .container .workInfo .workBox .gallery .all .front .details p {
+  position: relative;
+  left: -150%;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  color: #fff;
+}
+#work .container .workInfo .workBox .gallery .all .front .details .serviceMoreInfo {
+  position: absolute;
+  bottom: 20px;
+  left: -100%;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+#work .container .workInfo .workBox .gallery .all .front .details .serviceMoreInfoButton {
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+  font-size: 18px;
+  border-radius: 10px;
+  display: block;
+  color: #f9f871;
+  border: 1px solid;
+  padding: 10px 25px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  cursor: pointer;
+}
+#work .container .workInfo .workBox .gallery .all .front .details .serviceMoreInfoButton::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-radius: 10px;
+  height: 100%;
+  background-color: #f9f871;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#work .container .workInfo .workBox .gallery .all .front .details .serviceMoreInfoButton:hover {
+  color: #0a192f;
+  border-color: transparent;
+}
+#work .container .workInfo .workBox .gallery .all .front .details .serviceMoreInfoButton:hover::before {
+  width: 100%;
 }
 #work .container .workInfo .workBox .gallery .all:hover .front h2 {
   top: -100%;
@@ -805,6 +858,12 @@ ul {
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
+}
+#work .container .workInfo .workBox .gallery .all:hover .front .details p {
+  left: 0;
+}
+#work .container .workInfo .workBox .gallery .all:hover .front .details .serviceMoreInfo {
+  left: 20px;
 }
 
 @media (max-width: 690px) {

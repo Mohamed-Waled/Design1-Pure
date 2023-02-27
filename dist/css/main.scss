@@ -710,13 +710,59 @@ ul {
                 width: 100%;
                 height: 100%;
                 padding: 30px 20px;
-                top: calc(100% - 60px);
+                top: calc(100% - 70px);
                 left: 0;
                 opacity: 1;
                 transition: 0.5s;
                 z-index: 2;
                 h3 {
                   margin-bottom: 30px;
+                }
+                p {
+                  position: relative;
+                  left: -150%;
+                  transition: $main-transition;
+                  color: #fff;
+                }
+                .serviceMoreInfo {
+                  position: absolute;
+                  bottom: 20px;
+                  left: -100%;
+                  transition: $main-transition;
+                  transition-delay: calc($main-transition / 2);
+                }
+                .serviceMoreInfoButton {
+                  overflow: hidden;
+                  position: relative;
+                  z-index: 5;
+                  font-size: 18px;
+                  border-radius: 10px;
+                  display: block;
+                  color: $main-color-alt;
+                  border: 1px solid;
+                  padding: 10px 25px;
+                  width: fit-content;
+                  transition: $main-transition;
+                  cursor: pointer;
+                }
+                .serviceMoreInfoButton::before {
+                  content: "";
+                  position: absolute;
+                  width: 0;
+                  border-radius: 10px;
+                  height: 100%;
+                  background-color: $main-color-alt;
+                  top: 0;
+                  left: 0;
+                  z-index: -1;
+                  transition: $main-transition;
+                }
+                .serviceMoreInfoButton:hover {
+                  color: $main-color;
+                  border-color: transparent;
+                }
+                .serviceMoreInfoButton:hover::before {
+                  width: 100%;
                 }
               }
             }
@@ -735,6 +781,12 @@ ul {
                 top: 0;
                 background-color: rgba($color: #000000, $alpha: 0.5);
                 color: #fff;
+                p {
+                  left: 0;
+                }
+                .serviceMoreInfo {
+                  left: 20px;
+                }
               }
             }
           }
