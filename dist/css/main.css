@@ -494,7 +494,6 @@ ul {
   border-radius: 10px;
   display: block;
   color: #f9f871;
-  z-index: 5;
   border: 1px solid;
   padding: 20px 25px;
   width: -webkit-fit-content;
@@ -749,62 +748,63 @@ ul {
   transition: 1.5s;
 }
 #work .container .workInfo .workBox .gallery .all .front {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   width: 100%;
   height: 100%;
+  position: relative;
   border-radius: 10px;
-  position: absolute;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 20px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f9f871), color-stop(#82d47b), color-stop(#00a789), color-stop(#007583), color-stop(#004462), to(#0a192f));
-  background: linear-gradient(#f9f871, #82d47b, #00a789, #007583, #004462, #0a192f);
+  padding: 30px 20px;
 }
-#work .container .workInfo .workBox .gallery .all .front .details {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 20px;
+#work .container .workInfo .workBox .gallery .all .front h2 {
+  position: relative;
+  margin-bottom: 10px;
+  top: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  z-index: 2;
+}
+#work .container .workInfo .workBox .gallery .all .front .type {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  position: relative;
+  top: 0;
+  z-index: 2;
+}
+#work .container .workInfo .workBox .gallery .all .front img {
   position: absolute;
-  background: -webkit-gradient(linear, left top, left bottom, from(#0a192f), color-stop(#323452), color-stop(#5e5276), color-stop(#8e7098), color-stop(#c190b9), to(#f7b2d8));
-  background: linear-gradient(#0a192f, #323452, #5e5276, #8e7098, #c190b9, #f7b2d8);
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
-  opacity: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#work .container .workInfo .workBox .gallery .all .front .details {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 30px 20px;
+  top: calc(100% - 60px);
+  left: 0;
+  opacity: 1;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  z-index: 2;
 }
-#work .container .workInfo .workBox .gallery .all img {
-  max-width: 100%;
+#work .container .workInfo .workBox .gallery .all .front .details h3 {
+  margin-bottom: 30px;
+}
+#work .container .workInfo .workBox .gallery .all:hover .front h2 {
+  top: -100%;
+}
+#work .container .workInfo .workBox .gallery .all:hover .front .type {
+  top: -100%;
 }
 #work .container .workInfo .workBox .gallery .all:hover .front .details {
-  opacity: 1;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
 }
 
 @media (max-width: 690px) {
@@ -947,7 +947,6 @@ ul {
   }
 }
 #services {
-  height: 100vh;
   background-color: #0a192f;
   position: relative;
 }
@@ -961,16 +960,262 @@ ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 100%;
 }
 #services .container .servicesInfo {
   overflow: hidden;
-  border: 1px solid;
   width: 100%;
-  height: 80vh;
+  padding: 20px 0px;
+}
+#services .container .servicesInfo .servicesContainer {
+  margin: 20px auto;
+  display: block;
+}
+#services .container .servicesInfo .servicesContainer .service {
+  margin: 20px auto;
+  position: relative;
   padding: 20px;
+  width: 100%;
+  height: 400px;
+}
+#services .container .servicesInfo .servicesContainer .service .serviceTitleContainer {
+  color: #f9f871;
+  position: absolute;
+  top: 50px;
+  font-family: "Flamenco", cursive;
+}
+#services .container .servicesInfo .servicesContainer .service .serviceImage {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border-radius: 10px;
+  overflow: hidden;
+}
+#services .container .servicesInfo .servicesContainer .service .serviceImage img {
+  max-width: 100%;
+  -webkit-filter: brightness(50%);
+          filter: brightness(50%);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  margin: 0;
+  padding: 0;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+#services .container .servicesInfo .servicesContainer .service .serviceImage:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-filter: brightness(100%);
+          filter: brightness(100%);
+}
+#services .container .servicesInfo .servicesContainer .service .serviceDescription {
+  position: absolute;
+  border-radius: 10px;
+  width: 75%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-color: rgba(249, 248, 113, 0.1);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  padding: 20px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#services .container .servicesInfo .servicesContainer .service .serviceDescription p {
+  color: #f9f871;
+  font-family: "Cairo", sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+}
+#services .container .servicesInfo .servicesContainer .service .serviceMoreInfo {
+  position: absolute;
+  bottom: 50px;
+}
+#services .container .servicesInfo .servicesContainer .service .serviceMoreInfoButton {
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+  font-size: 18px;
+  border-radius: 10px;
+  display: block;
+  color: #f9f871;
+  border: 1px solid;
+  padding: 20px 25px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  cursor: pointer;
+}
+#services .container .servicesInfo .servicesContainer .service .serviceMoreInfoButton::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-radius: 10px;
+  height: 100%;
+  background-color: #f9f871;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#services .container .servicesInfo .servicesContainer .service .serviceMoreInfoButton:hover {
+  color: #0a192f;
+  border-color: transparent;
+}
+#services .container .servicesInfo .servicesContainer .service .serviceMoreInfoButton:hover::before {
+  width: 100%;
+}
+#services .container .servicesInfo .servicesContainer .serviceRight .serviceTitleContainer {
+  right: 20px;
+}
+#services .container .servicesInfo .servicesContainer .serviceRight .serviceImage {
+  left: 50px;
+}
+#services .container .servicesInfo .servicesContainer .serviceRight .serviceDescription {
+  right: 20px;
+}
+#services .container .servicesInfo .servicesContainer .serviceRight .serviceMoreInfo {
+  right: 20px;
+}
+#services .container .servicesInfo .servicesContainer .serviceLeft .serviceTitleContainer {
+  left: 20px;
+}
+#services .container .servicesInfo .servicesContainer .serviceLeft .serviceImage {
+  right: 50px;
+}
+#services .container .servicesInfo .servicesContainer .serviceLeft .serviceDescription {
+  left: 20px;
+}
+#services .container .servicesInfo .servicesContainer .serviceLeft .serviceMoreInfo {
+  left: 20px;
+}
+#services .container .servicesInfo .servicesContainerMobile {
+  margin: 20px auto;
+  display: none;
+}
+#services .container .servicesInfo .servicesContainerMobile .service {
+  margin: 20px auto;
+  position: relative;
+  padding: 0px 20px;
+  width: 320px;
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceTitleContainer {
+  color: #f9f871;
+  font-family: "Flamenco", cursive;
+  margin: 20px 0;
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceImage {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px auto;
+  position: relative;
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceImage img {
+  max-width: 100%;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceImage .serviceDescription {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  padding: 20px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  z-index: 5;
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceImage .serviceDescription .title {
+  height: 30px;
+  width: 100%;
+  color: #f9f871;
+  font-family: "Cairo", sans-serif;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceImage .serviceDescription p {
+  position: relative;
+  color: #f9f871;
+  font-family: "Cairo", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  left: -150%;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceImage:hover img {
+  -webkit-filter: brightness(50%);
+          filter: brightness(50%);
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceImage:hover .serviceDescription {
+  top: 0px !important;
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceImage:hover p {
+  left: 0;
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceMoreInfo {
+  margin: 20px auto;
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceMoreInfoButton {
+  margin: 20px auto;
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+  font-size: 18px;
+  border-radius: 10px;
+  display: block;
+  color: #f9f871;
+  border: 1px solid;
+  padding: 10px 25px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  cursor: pointer;
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceMoreInfoButton::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-radius: 10px;
+  height: 100%;
+  background-color: #f9f871;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceMoreInfoButton:hover {
+  color: #0a192f;
+  border-color: transparent;
+}
+#services .container .servicesInfo .servicesContainerMobile .service .serviceMoreInfoButton:hover::before {
+  width: 100%;
 }
 
+@media (max-width: 800px) {
+  #services .container .servicesInfo .servicesContainer {
+    display: none;
+  }
+  #services .container .servicesInfo .servicesContainerMobile {
+    display: block;
+  }
+}
 #contactus {
   height: 100vh;
   background-color: #0a192f;

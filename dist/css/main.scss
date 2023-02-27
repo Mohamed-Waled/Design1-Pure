@@ -453,7 +453,6 @@ ul {
           border-radius: 10px;
           display: block;
           color: $main-color-alt;
-          z-index: 5;
           border: 1px solid;
           padding: 20px 25px;
           width: fit-content;
@@ -660,54 +659,82 @@ ul {
             color: $main-color;
             transition: 1.5s;
             .front {
-              @include flexCenter();
               width: 100%;
               height: 100%;
+              position: relative;
               border-radius: 10px;
-              position: absolute;
               overflow: hidden;
-              @include flexCenter();
-              flex-direction: column;
-              gap: 20px;
-              background: linear-gradient(
-                #f9f871,
-                #82d47b,
-                #00a789,
-                #007583,
-                #004462,
-                #0a192f
-              );
+              // background: linear-gradient(
+              //   #f9f871,
+              //   #82d47b,
+              //   #00a789,
+              //   #007583,
+              //   // #004462,
+              //   // #0a192f
+              // );
+              padding: 30px 20px;
+              h2 {
+                position: relative;
+                margin-bottom: 10px;
+                top: 0;
+                transition: $main-transition;
+                z-index: 2;
+              }
+              .type {
+                transition: $main-transition;
+                position: relative;
+                top: 0;
+                z-index: 2;
+              }
+              img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
             }
             .front {
               .details {
-                @include flexCenter();
-                flex-direction: column;
-                gap: 20px;
                 position: absolute;
-                background: linear-gradient(
-                  #0a192f,
-                  #323452,
-                  #5e5276,
-                  #8e7098,
-                  #c190b9,
-                  #f7b2d8
-                );
+                // background: linear-gradient(
+                //   #f7b2d8,
+                //   #c190b9,
+                //   #8e7098,
+                //   #5e5276,
+                //   #323452,
+                //   #0a192f,
+                // );
                 width: 100%;
                 height: 100%;
-                top: 0;
+                padding: 30px 20px;
+                top: calc(100% - 60px);
                 left: 0;
-                opacity: 0;
+                opacity: 1;
                 transition: 0.5s;
+                z-index: 2;
+                h3 {
+                  margin-bottom: 30px;
+                }
               }
-            }
-            img {
-              max-width: 100%;
             }
           }
           .all:hover {
             .front {
+              // filter: brightness(40%);
+              h2 {
+                top: -100%;
+              }
+              .type {
+                top: -100%;
+              }
               .details {
-                opacity: 1;
+                // opacity: 1;
+                top: 0;
+                background-color: rgba($color: #000000, $alpha: 0.5);
+                color: #fff;
               }
             }
           }
@@ -834,18 +861,264 @@ ul {
 //######################################################################
 // Services Start
 #services {
-  height: 100vh;
   background-color: $main-color;
   position: relative;
   .container {
     @include flexCenter();
-    height: 100%;
     .servicesInfo {
       overflow: hidden;
-      border: 1px solid;
       width: 100%;
-      height: 80vh;
-      padding: 20px;
+      padding: 20px 0px;
+      .servicesContainer {
+        margin: 20px auto;
+        display: block;
+        .service {
+          margin: 20px auto;
+          position: relative;
+          padding: 20px;
+          width: 100%;
+          height: 400px;
+          .serviceTitleContainer {
+            color: $main-color-alt;
+            position: absolute;
+            top: 50px;
+            font-family: "Flamenco", cursive;
+          }
+          .serviceImage {
+            width: fit-content;
+            // height: 300px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            // border: 4px solid rgba($color: $main-color-alt, $alpha: 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            img {
+              max-width: 100%;
+              // filter: blur(5px);
+              filter: brightness(50%);
+              transition: $main-transition;
+              margin: 0;
+              padding: 0;
+              transform: scale(1.5);
+            }
+          }
+          .serviceImage:hover img {
+            // filter: blur(0);
+            transform: scale(1.1);
+            filter: brightness(100%);
+          }
+          .serviceDescription {
+            position: absolute;
+            border-radius: 10px;
+            width: 75%;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba($color: #f9f871, $alpha: 0.1);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            transition: $main-transition;
+            p {
+              color: $main-color-alt;
+              font-family: "Cairo", sans-serif;
+              font-size: 18px;
+              line-height: $main-line-height;
+            }
+          }
+          .serviceMoreInfo {
+            position: absolute;
+            bottom: 50px;
+          }
+          .serviceMoreInfoButton {
+            overflow: hidden;
+            position: relative;
+            z-index: 5;
+            font-size: 18px;
+            border-radius: 10px;
+            display: block;
+            color: $main-color-alt;
+            border: 1px solid;
+            padding: 20px 25px;
+            width: fit-content;
+            transition: $main-transition;
+            cursor: pointer;
+          }
+          .serviceMoreInfoButton::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            border-radius: 10px;
+            height: 100%;
+            background-color: $main-color-alt;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: $main-transition;
+          }
+          .serviceMoreInfoButton:hover {
+            color: $main-color;
+            border-color: transparent;
+          }
+          .serviceMoreInfoButton:hover::before {
+            width: 100%;
+          }
+        }
+        .serviceRight {
+          .serviceTitleContainer {
+            right: 20px;
+          }
+          .serviceImage {
+            left: 50px;
+          }
+          .serviceDescription {
+            right: 20px;
+          }
+          .serviceMoreInfo {
+            right: 20px;
+          }
+        }
+        .serviceLeft {
+          .serviceTitleContainer {
+            left: 20px;
+          }
+          .serviceImage {
+            right: 50px;
+          }
+          .serviceDescription {
+            left: 20px;
+          }
+          .serviceMoreInfo {
+            left: 20px;
+          }
+        }
+      }
+
+      .servicesContainerMobile {
+        margin: 20px auto;
+        display: none;
+        .service {
+          margin: 20px auto;
+          position: relative;
+          padding: 0px 20px;
+          width: 320px;
+          // height: 300px;
+          .serviceTitleContainer {
+            color: $main-color-alt;
+            font-family: "Flamenco", cursive;
+            margin: 20px 0;
+          }
+          .serviceImage {
+            width: fit-content;
+            // height: 300px;
+            // border: 4px solid rgba($color: $main-color-alt, $alpha: 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px auto;
+            position: relative;
+            img {
+              max-width: 100%;
+              transition: $main-transition;
+            }
+            .serviceDescription {
+              position: absolute;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border-radius: 10px;
+              // background-color: rgba($color: #f9f871, $alpha: 0.1);
+              // backdrop-filter: blur(5px);
+              padding: 20px;
+              transition: $main-transition;
+              z-index: 5;
+              .title {
+                height: 30px;
+                width: 100%;
+                color: $main-color-alt;
+                font-family: "Cairo", sans-serif;
+                font-size: 22px;
+                margin-bottom: 10px;
+              }
+              p {
+                position: relative;
+                color: $main-color-alt;
+                font-family: "Cairo", sans-serif;
+                font-size: 14px;
+                line-height: $main-line-height;
+                left: -150%;
+                transition: $main-transition;
+                // transition-delay: $main-transition;
+              }
+            }
+          }
+          .serviceImage:hover img {
+            filter: brightness(50%);
+            transform: scale(1.25);
+          }
+          .serviceImage:hover .serviceDescription {
+            top: 0px !important;
+          }
+          .serviceImage:hover p {
+            left: 0;
+          }
+          .serviceMoreInfo {
+            margin: 20px auto;
+          }
+          .serviceMoreInfoButton {
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+            z-index: 5;
+            font-size: 18px;
+            border-radius: 10px;
+            display: block;
+            color: $main-color-alt;
+            border: 1px solid;
+            padding: 10px 25px;
+            width: fit-content;
+            transition: $main-transition;
+            cursor: pointer;
+          }
+          .serviceMoreInfoButton::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            border-radius: 10px;
+            height: 100%;
+            background-color: $main-color-alt;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: $main-transition;
+          }
+          .serviceMoreInfoButton:hover {
+            color: $main-color;
+            border-color: transparent;
+          }
+          .serviceMoreInfoButton:hover::before {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 800px) {
+  #services {
+    .container {
+      .servicesInfo {
+        .servicesContainer {
+          display: none;
+        }
+      }
+    }
+  }
+  #services {
+    .container {
+      .servicesInfo {
+        .servicesContainerMobile {
+          display: block;
+        }
+      }
     }
   }
 }

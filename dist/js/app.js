@@ -85,3 +85,69 @@ var swiper = new Swiper(".mySwiper", {
     prevEl: ".swiper-button-prev",
   },
 });
+
+// ########################################################################################################
+
+const serviceDescription = document.querySelectorAll(
+  ".servicesContainerMobile .serviceDescription"
+);
+const serviceImages = document.querySelectorAll(
+  ".servicesContainerMobile .serviceImage"
+);
+const serviceImagesImg = document.querySelectorAll(
+  ".servicesContainerMobile .serviceImage img"
+);
+const serviceImagesRight = document.querySelectorAll(
+  ".serviceRight .serviceImage"
+);
+const serviceImagesLeft = document.querySelectorAll(
+  ".serviceLeft .serviceImage"
+);
+
+for (const image of serviceImagesRight) {
+  image.addEventListener("mouseenter", () => {
+    const description = document.querySelector(
+      `.serviceDescription-${image.dataset.id}`
+    );
+    description.style.transform = "translate(40%, -50%)";
+  });
+}
+
+for (const image of serviceImagesRight) {
+  image.addEventListener("mouseleave", () => {
+    const description = document.querySelector(
+      `.serviceDescription-${image.dataset.id}`
+    );
+    description.style.transform = "translate(0, -50%)";
+  });
+}
+
+for (const image of serviceImagesLeft) {
+  image.addEventListener("mouseenter", () => {
+    const description = document.querySelector(
+      `.serviceDescription-${image.dataset.id}`
+    );
+    description.style.transform = "translate(-40%, -50%)";
+  });
+}
+
+for (const image of serviceImagesLeft) {
+  image.addEventListener("mouseleave", () => {
+    const description = document.querySelector(
+      `.serviceDescription-${image.dataset.id}`
+    );
+    description.style.transform = "translate(0, -50%)";
+  });
+}
+
+for (const image of serviceImagesImg) {
+  for (const description of serviceDescription) {
+    description.style.top = `${image.clientHeight - 62}px`;
+  }
+}
+
+for (const image of serviceImages) {
+  for (const img of serviceImagesImg) {
+    image.style.height = `${img.clientHeight}px`;
+  }
+}
